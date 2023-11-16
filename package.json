@@ -1,9 +1,9 @@
 {
   "name": "@caydenmercury/string-pixel-width",
-  "version": "1.12.1",
+  "version": "1.12.2",
   "description": "String pixel width measurement on the backend in Javascript",
   "main": "src/index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "lint": "gulp lint",
