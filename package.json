@@ -1,5 +1,5 @@
 {
-  "name": "@caydenmercury/string-pixel-width",
+  "name": "string-pixel-width",
   "version": "1.11.0",
   "description": "String pixel width measurement on the backend in Javascript",
   "main": "lib/index.js",
