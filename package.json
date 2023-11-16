@@ -1,5 +1,5 @@
 {
-  "name": "string-pixel-width",
+  "name": "@caydenmercury/string-pixel-width",
   "version": "1.11.0",
   "description": "String pixel width measurement on the backend in Javascript",
   "main": "lib/index.js",
@@ -19,7 +19,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/adambisek/string-pixel-width.git"
+    "url": "git+https://github.com/adambisek/string-pixel-width.git"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -42,5 +42,12 @@
   },
   "dependencies": {
     "lodash.deburr": "^4.1.0"
+  },
+  "bugs": {
+    "url": "https://github.com/adambisek/string-pixel-width/issues"
+  },
+  "homepage": "https://github.com/adambisek/string-pixel-width#readme",
+  "directories": {
+    "doc": "docs"
   }
 }
