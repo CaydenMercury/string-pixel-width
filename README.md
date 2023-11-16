@@ -5,6 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/adambisek/string-pixel-width/badge.svg?branch=master)](https://coveralls.io/github/adambisek/string-pixel-width?branch=master)
 
 String pixel width measurement on the backend in Javascript.
+Credit to adambisek as the creator of this repository.
 
 [Why I created this package? Read more about purpose](https://medium.com/@adambisek/text-pixel-width-measuring-on-javascript-backend-node-js-2b82bea97fab#.8ypyiffyw)
 
@@ -34,6 +35,7 @@ Supported fonts:
 - Verdana
 - Webdings
 - Open Sans
+- Public Sans
 - Tahoma
 
 Example
