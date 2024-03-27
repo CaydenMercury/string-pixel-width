@@ -36,7 +36,10 @@ Supported fonts:
 - Webdings
 - Open Sans
 - Public Sans
+- Network Sans
 - Tahoma
+- Montserrat
+- Cerebri Sans
 
 Example
 ------------
