@@ -40,6 +40,7 @@ Supported fonts:
 - Tahoma
 - Montserrat
 - Cerebri Sans
+- Nunito
 
 Example
 ------------
