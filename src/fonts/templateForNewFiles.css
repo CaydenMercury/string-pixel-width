@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "FontFamilyNameHere";
+    font-weight: 400;
+    font-style: normal;
+    src: url(data:application/octet-stream;base64,);
+}
+
+@font-face {
+    font-family: "FontFamilyNameHere";
+    font-weight: 500;
+    font-style: normal;
+    src: url(data:application/octet-stream;base64,);
+}
+
+@font-face {
+    font-family: "FontFamilyNameHere";
+    font-weight: 600;
+    font-style: normal;
+    src: url(data:application/octet-stream;base64,);
+}
+
+@font-face {
+    font-family: "FontFamilyNameHere";
+    font-weight: 700;
+    font-style: normal;
+    src: url(data:application/octet-stream;base64,);
+}

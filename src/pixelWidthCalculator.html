@@ -1,82 +1,85 @@
+<html>
 
-<html><head>
-  </head>
-  <body>
-    <span id="h1" style="font-family: Quantify; font-size: 100;">test string</span>
-    <div id="h1-info">433</div>
+<head>
+  <link rel="stylesheet" type="text/css" href="./fonts/CerebriSansPro.css">
+  <link rel="stylesheet" type="text/css" href="./fonts/Montserrat.css">
+  <link rel="stylesheet" type="text/css" href="./fonts/NetworkSans.css">
+  <link rel="stylesheet" type="text/css" href="./fonts/Nunito.css">
+  <link rel="stylesheet" type="text/css" href="./fonts/OpenSans.css">
+  <link rel="stylesheet" type="text/css" href="./fonts/OpenSansCondensed.css">
+  <link rel="stylesheet" type="text/css" href="./fonts/PublicSans.css">
+</head>
 
-    <div class="sandbox"><span style="font-family: Quantify; font-size: 100;">~<span></span></span></div>
-    <textarea id="elFinal" style="width: 100%; height: 400px"></textarea>
+<body>
+  <span id="h1" style="font-family: 'Open Sans Condensed'; font-size: 100; font-weight: 500;">To Nevada Rd (via Transport Centre)</span>
+  <div id="h1-info">433</div>
 
-    <script>
-      var websafe = [
-        'Andale Mono',
-        'Arial',
-        'Avenir',
-        'Avenir Next',
-        'Comic Sans MS',
-        'Courier New',
-        'Georgia',
-        'Helvetica',
-        'Impact',
-        'Inter',
-        'Times New Roman',
-        'Trebuchet MS',
-        'Verdana',
-        'Webdings',
-        'Open Sans',
-        'Public Sans',
-        'Network Sans',
-        'Tahoma',
-        'Quantify',
-        'Montserrat',
-        'Cerebri Sans',
-        'Nunito'
-      ]
+  <div class="sandbox"><span></span></div>
+  <textarea id="elFinal" style="width: 100%; height: 400px"></textarea>
 
-      function checkFont(name) {
-        var h1 = document.getElementById('h1');
-        h1.style.fontFamily = name;
-        var info = document.getElementById('h1-info');
-        info.innerHTML = h1.offsetWidth;
+  <script>
+    var imported_fonts = [
+      'Cerebri Sans Pro',
+      'Montserrat',
+      'Network Sans',
+      'Nunito',
+      'Open Sans',
+      'Open Sans Condensed',
+      'Public Sans'
+    ]
 
-        var widths = {};
-        var sandbox = document.getElementsByClassName('sandbox')[0];
-        for (var i = 0; i <= 127; i++) {
-          if (i < 32) continue; // non-printable chars
-          if (i === 127) continue; // DELETE char
-          var letter = String.fromCharCode(i);
-          var printableLetter = (letter);
-          if (printableLetter === ' ') {
-            printableLetter = '&nbsp';
-          }
-          widths[letter] = [
-              getWidthOf(sandbox, printableLetter, name, 'normal', 'normal'),
-              getWidthOf(sandbox, printableLetter, name, 'bold', 'normal'),
-              getWidthOf(sandbox, printableLetter, name, 'normal', 'italic'),
-              getWidthOf(sandbox, printableLetter, name, 'bold', 'italic')
-          ];
+    const VERSION = 2;
+    const fontSize = 100;
+
+    function checkFont(name) {
+      var h1 = document.getElementById('h1');
+      var info = document.getElementById('h1-info');
+      info.innerHTML = h1.offsetWidth;
+
+      var widths = {};
+      var sandbox = document.getElementsByClassName('sandbox')[0];
+      for (var i = 32; i < 127; i++) {
+        var letter = String.fromCharCode(i);
+        var printableLetter = (letter);
+        if (printableLetter === ' ') {
+          printableLetter = '&nbsp';
         }
-        return widths;
+        widths[letter] = [
+          getWidthOf(sandbox, printableLetter, name, 400, 'normal'),
+          getWidthOf(sandbox, printableLetter, name, 500, 'normal'),
+          getWidthOf(sandbox, printableLetter, name, 600, 'normal'),
+          getWidthOf(sandbox, printableLetter, name, 700, 'normal')
+        ];
+      }
+      return widths;
+    }
+
+    var counter = 0;
+    function getWidthOf(sandbox, printableLetter, name, weight, style) {
+      sandbox.innerHTML = `<span style="font-family: ${name}; font-size: ${fontSize}; font-weight: ${weight}; font-style: ${style}; position: absolute; height: auto; width: auto; white-space: nowrap;">${printableLetter}</span>`;
+
+      var el = sandbox.children[0];
+      if (counter < 127 && name == 'Cerebri Sans Pro') {
+        // console.log(el)
+        console.log(printableLetter, el.clientWidth)
+        counter++;
       }
 
-      function getWidthOf(sandbox, printableLetter, name, weight, style) {
-          sandbox.innerHTML = `<span style="font-family: ${name}; font-size: 100; font-weight: ${weight}; font-style: ${style};">${printableLetter}<span>`;
-          var el = sandbox.children[0];
-          return el.offsetWidth;
-      }
+      return el.clientWidth;
+    }
 
-      var widths = websafe.reduce((all, font) => {
-        return Object.assign(all, {[font.toLowerCase()]: checkFont(font)});
-      }, {});
+    var widths = imported_fonts.reduce((all, font) => {
+      return Object.assign(all, { [font.toLowerCase()]: checkFont(font) });
+    }, {});
 
-      var elFinal = document.getElementById('elFinal');
-      elFinal.innerHTML = `const widthsMap = ${JSON.stringify(widths, null, 2)};
+    var elFinal = document.getElementById('elFinal');
+    elFinal.innerHTML = `const widthsMapV2 = ${JSON.stringify(widths, null, 2)};
+                         export default widthsMapV2;
+                         `;
 
-export default widthsMap;
-`;
-      document.body.appendChild(elFinal);
-      elFinal.select();
-    </script>
+    document.body.appendChild(elFinal);
+    elFinal.select();
+  </script>
 </body>
+
 </html>
